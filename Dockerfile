@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install gnupg wget -y && \
   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-COPY . .
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 RUN npm install
+COPY . .
 
 CMD ["npm", "run", "start"]
